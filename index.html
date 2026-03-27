@@ -1,224 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heramb Jyotish - Spiritual Guidance & Healing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heramb Jyotish - Spiritual Guidance & Healing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        :root {
+            --ganesha-green: #2E8B57;
+            --emerald-green: #228B22;
+            --gold-accent: #DAA520;
+            --soft-cream: #F0F8F0;
+            --deep-charcoal: #2F4F4F;
+            --mystical-purple: #8A2BE2;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--deep-charcoal);
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(46,139,87,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(218,165,32,0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--soft-cream) 0%, #E6F3E6 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
 
-:root {
-    --earth-gold: #d4af37;
-    --warm-brown: #8B4513;
-    --soft-beige: #F5F0E1;
-    --deep-earth: #4A2C2A;
-    --sage-green: #1f7a5c;
-}
+        /* Twinkling stars */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(1.5px 1.5px at 30px 40px, #DAA520, transparent),
+                radial-gradient(1px 1px at 80px 70px, var(--ganesha-green), transparent),
+                radial-gradient(1px 1px at 120px 30px, #DAA520, transparent),
+                radial-gradient(2px 2px at 200px 100px, var(--mystical-purple), transparent);
+            background-repeat: repeat;
+            background-size: 250px 200px;
+            animation: twinkle 15s ease-in-out infinite;
+            z-index: -1;
+            opacity: 0.5;
+        }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--deep-earth);
-    background: linear-gradient(135deg, var(--soft-beige), #E8D5B8);
-}
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
 
-/* HEADER */
-header {
-    background: rgba(74,44,42,0.95);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
+        /* Header */
+        header {
+            background: rgba(47, 79, 79, 0.95);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
 
-nav {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:1rem 2rem;
-}
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
 
-.logo {
-    font-size:1.8rem;
-    color:var(--earth-gold);
-    text-decoration:none;
-}
+        .logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.2rem;
+            background: linear-gradient(45deg, var(--ganesha-green), var(--emerald-green), var(--mystical-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            font-weight: 700;
+            animation: ganeshaGlow 3s ease-in-out infinite alternate;
+        }
 
-.nav-links {
-    display:flex;
-    list-style:none;
-    gap:2rem;
-}
+        @keyframes ganeshaGlow {
+            0% { text-shadow: 0 0 10px var(--ganesha-green); }
+            100% { text-shadow: 0 0 20px var(--ganesha-green), 0 0 30px var(--emerald-green); }
+        }
 
-.nav-links a {
-    color:white;
-    text-decoration:none;
-}
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-.whatsapp-btn {
-    background: var(--sage-green);
-    padding:0.7rem 1.2rem;
-    border-radius:30px;
-    color:white;
-    text-decoration:none;
-}
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s;
+        }
 
-/* HERO */
-.hero {
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-    background:
-    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-    url('https://www.transparenttextures.com/patterns/stardust.png');
-}
+        .nav-links a:hover {
+            color: var(--gold-accent);
+            transform: translateY(-2px);
+        }
 
-.hero h1 {
-    font-size:3rem;
-    text-shadow:0 0 10px gold;
-}
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+        }
 
-.btn {
-    padding:1rem 2rem;
-    border-radius:30px;
-    text-decoration:none;
-    margin-top:15px;
-    display:inline-block;
-}
+        .whatsapp-btn, .insta-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
 
-.btn-primary {
-    background: var(--earth-gold);
-    color:black;
-}
+        .whatsapp-btn {
+            background: linear-gradient(45deg, var(--ganesha-green), var(--emerald-green));
+            color: white;
+            box-shadow: 0 4px 20px rgba(46,139,87,0.4);
+        }
 
-/* SERVICES */
-.services {
-    padding:100px 2rem;
-}
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46,139,87,0.6);
+        }
 
-.services-grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
+        .insta-btn {
+            background: linear-gradient(45deg, #E4405F, #F77737);
+            color: white;
+            box-shadow: 0 4px 20px rgba(228,64,95,0.4);
+        }
 
-.service-card {
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    text-align:center;
-}
+        .insta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(228,64,95,0.6);
+        }
 
-/* REVIEWS */
-.reviews {
-    padding:80px 2rem;
-    text-align:center;
-}
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), 
+                        radial-gradient(circle at center, rgba(46,139,87,0.4) 0%, transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
 
-/* FOOTER */
-footer {
-    background:var(--deep-earth);
-    color:white;
-    text-align:center;
-    padding:2rem;
-}
-</style>
+        .hero::after {
+            content: '⭐⭐⭐✨⭐';
+            position: absolute;
+            font-size: 2rem;
+            animation: float 4s ease-in-out infinite;
+            top: 20%; right: 10%;
+            opacity: 0.8;
+        }
+
+        .hero-content h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 0 0 30px rgba(255,255,255,0.5);
+        }
+
+        /* Services */
+        .services {
+            padding: 100px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: var(--deep-charcoal);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '✨';
+            position: absolute;
+            font-size: 2rem;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--ganesha-green), var(--gold-accent), var(--emerald-green));
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 70px rgba(46,139,87,0.3);
+            border-color: var(--ganesha-green);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            color: var(--ganesha-green);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            text-shadow: 0 0 20px var(--ganesha-green);
+        }
+
+        /* Reviews */
+        .reviews {
+            padding: 100px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(240,248,240,0.9));
+        }
+
+        .reviews-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 2rem;
+            padding: 2rem 0;
+            scrollbar-width: none;
+        }
+
+        .reviews-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .review-card {
+            flex: 0 0 350px;
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border: 2px solid rgba(46,139,87,0.2);
+            scroll-snap-align: center;
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(46,139,87,0.2);
+        }
+
+        .review-stars {
+            color: var(--gold-accent);
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        /* Book Section */
+        .book-section {
+            background: linear-gradient(135deg, var(--ganesha-green) 0%, var(--emerald-green) 100%);
+            color: white;
+            padding: 120px 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-section::before {
+            content: '500+ Happy Clients';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--ganesha-green), var(--emerald-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 30px rgba(46,139,87,0.6);
+            z-index: 9999;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(46,139,87,0.8);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 10px 30px rgba(46,139,87,0.6); }
+            50% { box-shadow: 0 0 0 0 rgba(46,139,87,0.8); }
+            100% { box-shadow: 0 10px 30px rgba(46,139,87,0.6); }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .social-buttons { flex-direction: column; gap: 0.5rem; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .cta-buttons { flex-direction: column; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">🕉️ Heramb Jyotish</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#book">Book Now</a></li>
+            </ul>
+            <div class="social-buttons">
+                <a href="https://wa.me/9699412757?text=Hi%20Heramb%20Jyotish!%20I%27d%20like%20to%20book%20a%20session%20🌟" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.instagram.com/herambjyotish1333/" class="insta-btn" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </nav>
+    </header>
 
-<header>
-<nav>
-<a href="#" class="logo">🐘 Heramb Jyotish</a>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🌟 Discover Your Cosmic Path</h1>
+            <p>Ancient wisdom meets modern guidance. Unlock your destiny with personalized Birth Chart, Tarot & Numerology consultations.</p>
+            <div class="cta-buttons">
+                <a href="#book" class="btn btn-primary">Book Your Session</a>
+                <a href="#services" class="btn btn-secondary">Explore Services</a>
+            </div>
+        </div>
+    </section>
 
-<ul class="nav-links">
-<li><a href="#services">Services</a></li>
-<li><a href="#book">Book</a></li>
-<li><a href="#reviews">Reviews</a></li>
-</ul>
+    <!-- Services (Vastu REMOVED) -->
+    <section id="services" class="services">
+        <h2 class="section-title">Our Sacred Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Birth Chart Reading</h3>
+                <p>Deep dive into your natal chart to understand life's purpose, strengths & karmic lessons.</p>
+                <a href="#book" class="btn btn-primary">Book Now</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h3>Tarot Card Reading</h3>
+                <p>Powerful insights from Tarot wisdom to guide your present & future decisions.</p>
+                <a href="#book" class="btn btn-primary">Book Now</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-hashtag"></i>
+                </div>
+                <h3>Numerology</h3>
+                <p>Decode mystical numbers of your birth date & name to reveal your life path.</p>
+                <a href="#book" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+    </section>
 
-<a href="https://wa.me/919876543210" class="whatsapp-btn" target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
+    <!-- Reviews -->
+    <section id="reviews" class="reviews">
+        <h2 class="section-title">🌟 What Clients Say</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <h4>Priya Sharma</h4>
+                <p>"Heramb's birth chart reading changed my life! So accurate & insightful."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <h4>Rahul Patel</h4>
+                <p>"Tarot session gave me perfect clarity. Highly recommend!"</p>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <h4>Anita Desai</h4>
+                <p>"Numerology revealed my true potential. Thank you Heramb Ji!"</p>
+            </div>
+        </div>
+    </section>
 
-<a href="https://www.instagram.com/herambjyotish1333/" class="whatsapp-btn" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
-
-</nav>
-</header>
-
-<section class="hero">
-<div>
-<h1>🌟 Discover Your Cosmic Path</h1>
-<p>Unlock your destiny with astrology guidance</p>
-<a href="#services" class="btn btn-primary">Explore Services</a>
-</div>
-</section>
-
-<section id="services" class="services">
-<h2 style="text-align:center;">Our Services</h2>
-
-<div class="services-grid">
-
-<div class="service-card">
-<h3>Birth Chart Reading</h3>
-<p>Understand your destiny</p>
-</div>
-
-<div class="service-card">
-<h3>Tarot Reading</h3>
-<p>Future insights</p>
-</div>
-
-<div class="service-card">
-<h3>Numerology</h3>
-<p>Decode numbers</p>
-</div>
-
-<div class="service-card">
-<h3>Vastu Shastra</h3>
-<p>Coming Soon 🔮</p>
-</div>
-
-</div>
-</section>
-
-<section id="book" class="services">
-<h2 style="text-align:center;">Book via WhatsApp</h2>
-<p style="text-align:center;">Click below to contact</p>
-
-<div style="text-align:center; margin-top:20px;">
-<a href="https://wa.me/919876543210" class="btn btn-primary">Chat on WhatsApp</a>
-</div>
-</section>
-
-<section id="reviews" class="reviews">
-<h2>Customer Reviews 🌟</h2>
-
-<input type="file"><br><br>
-
-<select>
-<option>⭐⭐⭐⭐⭐</option>
-<option>⭐⭐⭐⭐</option>
-<option>⭐⭐⭐</option>
-</select><br><br>
-
-<textarea placeholder="Write your review..." rows="4" style="width:300px;"></textarea><br><br>
-
-<button class="btn btn-primary">Submit</button>
-</section>
-
-<footer>
-<p>© 2026 Heramb Jyotish 🌌</p>
-</footer>
-
-</body>
-</html>
-
+    <!-- Book Section -->
+    <section id="book" class="book-section">
+        <div class="book-form">
+            <h2 style="font-family: 'Crimson Text', serif; font-size: 2.8rem; margin-bottom: 2rem;">Ready to Begin Your Journey?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2.5rem; opacity: 0.95;">Book now - 24hr response guaranteed ✨</p>
+            
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>Service</
