@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,7 @@
             --soft-cream: #F0F8F0;
             --deep-charcoal: #2F4F4F;
             --mystical-purple: #8A2BE2;
+            --white: #FFFFFF;
         }
 
         body {
@@ -90,6 +92,9 @@
             text-decoration: none;
             font-weight: 700;
             animation: ganeshaGlow 3s ease-in-out infinite alternate;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         @keyframes ganeshaGlow {
@@ -104,20 +109,60 @@
         }
 
         .nav-links a {
-            color: #fff;
+            color: var(--white);
             text-decoration: none;
             font-weight: 400;
             transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
         }
 
         .nav-links a:hover {
             color: var(--gold-accent);
             transform: translateY(-2px);
+            background: rgba(218,165,32,0.2);
         }
 
         .social-buttons {
             display: flex;
             gap: 1rem;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            font-size: 1rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--ganesha-green), var(--emerald-green));
+            color: var(--white);
+            box-shadow: 0 6px 25px rgba(46,139,87,0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(46,139,87,0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--ganesha-green);
+            transform: translateY(-3px);
         }
 
         .whatsapp-btn, .insta-btn {
@@ -154,35 +199,80 @@
             box-shadow: 0 8px 25px rgba(228,64,95,0.6);
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            transition: 0.3s;
+        }
+
         /* Hero */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), 
-                        radial-gradient(circle at center, rgba(46,139,87,0.4) 0%, transparent 70%);
+            background: 
+                linear-gradient(135deg, rgba(46,139,87,0.8) 0%, rgba(34,139,34,0.7) 50%, rgba(0,0,0,0.6) 100%),
+                radial-gradient(circle at center, rgba(218,165,32,0.3) 0%, transparent 70%);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: var(--white);
             position: relative;
             overflow: hidden;
+            padding: 0 2rem;
         }
 
         .hero::after {
-            content: '⭐⭐⭐✨⭐';
+            content: '🕉️✨⭐🌟';
             position: absolute;
-            font-size: 2rem;
-            animation: float 4s ease-in-out infinite;
+            font-size: 3rem;
+            animation: float 6s ease-in-out infinite;
             top: 20%; right: 10%;
-            opacity: 0.8;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content h1 {
             font-family: 'Crimson Text', serif;
-            font-size: 3.8rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
             animation: fadeInUp 1s ease;
-            text-shadow: 0 0 30px rgba(255,255,255,0.5);
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.7);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-icon {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+            opacity: 0.9;
         }
 
         /* Services */
@@ -195,7 +285,7 @@
         .section-title {
             text-align: center;
             font-family: 'Crimson Text', serif;
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 3rem;
             color: var(--deep-charcoal);
             position: relative;
@@ -256,6 +346,13 @@
             text-shadow: 0 0 20px var(--ganesha-green);
         }
 
+        .service-card h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--deep-charcoal);
+        }
+
         /* Reviews */
         .reviews {
             padding: 100px 2rem;
@@ -279,7 +376,7 @@
 
         .review-card {
             flex: 0 0 350px;
-            background: white;
+            background: var(--white);
             padding: 2.5rem 2rem;
             border-radius: 25px;
             text-align: center;
@@ -303,7 +400,7 @@
         /* Book Section */
         .book-section {
             background: linear-gradient(135deg, var(--ganesha-green) 0%, var(--emerald-green) 100%);
-            color: white;
+            color: var(--white);
             padding: 120px 2rem;
             text-align: center;
             position: relative;
@@ -322,6 +419,56 @@
             font-weight: 500;
         }
 
+        .book-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .book-form h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 2rem;
+        }
+
+        .book-form > p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.95);
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+
         /* Floating WhatsApp */
         .floating-whatsapp {
             position: fixed;
@@ -334,13 +481,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--white);
             font-size: 1.8rem;
             box-shadow: 0 10px 30px rgba(46,139,87,0.6);
             z-index: 9999;
             cursor: pointer;
             transition: all 0.3s;
             animation: pulse 2s infinite;
+            text-decoration: none;
         }
 
         .floating-whatsapp:hover {
@@ -365,13 +513,118 @@
             50% { transform: translateY(-20px); }
         }
 
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--white) 0%, var(--soft-cream) 100%);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            transform: scale(0.7);
+            animation: modalPop 0.3s ease forwards;
+            box-shadow: 0 25px 100px rgba(0,0,0,0.5);
+        }
+
+        @keyframes modalPop {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .close {
+            color: var(--deep-charcoal);
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--ganesha-green);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .social-buttons { flex-direction: column; gap: 0.5rem; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .cta-buttons { flex-direction: column; }
-            .services-grid { grid-template-columns: 1fr; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(47, 79, 79, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .reviews-grid {
+                flex-direction: column;
+                overflow-x: visible;
+                align-items: center;
+            }
+
+            .review-card {
+                flex: none;
+                width: 90%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 0 1rem;
+            }
+
+            .services, .reviews, .book-section {
+                padding: 60px 1rem;
+            }
         }
     </style>
 </head>
@@ -379,14 +632,21 @@
     <!-- Header -->
     <header>
         <nav>
-            <a href="#" class="logo">🕉️ Heramb Jyotish</a>
-            <ul class="nav-links">
+            <a href="#" class="logo">
+                <i class="fas fa-om"></i> Heramb Jyotish
+            </a>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#book">Book Now</a></li>
             </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <div class="social-buttons">
-                <a href="https://wa.me/9699412757?text=Hi%20Heramb%20Jyotish!%20I%27d%20like%20to%20book%20a%20session%20🌟" class="whatsapp-btn" target="_blank">
+                <a href="https://wa.me/9699412757?text=Hi%20Heramb%20Jyotish!%20I'd%20like%20to%20book%20a%20session%20🌟" class="whatsapp-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://www.instagram.com/herambjyotish1333/" class="insta-btn" target="_blank">
@@ -399,7 +659,8 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h1>🌟 Discover Your Cosmic Path</h1>
+            <div class="hero-icon">🕉️</div>
+            <h1>Discover Your Cosmic Path</h1>
             <p>Ancient wisdom meets modern guidance. Unlock your destiny with personalized Birth Chart, Tarot & Numerology consultations.</p>
             <div class="cta-buttons">
                 <a href="#book" class="btn btn-primary">Book Your Session</a>
@@ -408,7 +669,7 @@
         </div>
     </section>
 
-    <!-- Services (Vastu REMOVED) -->
+    <!-- Services -->
     <section id="services" class="services">
         <h2 class="section-title">Our Sacred Services</h2>
         <div class="services-grid">
@@ -441,7 +702,7 @@
 
     <!-- Reviews -->
     <section id="reviews" class="reviews">
-        <h2 class="section-title">🌟 What Clients Say</h2>
+        <h2 class="section-title">What Clients Say</h2>
         <div class="reviews-grid">
             <div class="review-card">
                 <div class="review-stars">★★★★★</div>
@@ -464,9 +725,120 @@
     <!-- Book Section -->
     <section id="book" class="book-section">
         <div class="book-form">
-            <h2 style="font-family: 'Crimson Text', serif; font-size: 2.8rem; margin-bottom: 2rem;">Ready to Begin Your Journey?</h2>
-            <p style="font-size: 1.3rem; margin-bottom: 2.5rem; opacity: 0.95;">Book now - 24hr response guaranteed ✨</p>
+            <h2>Ready to Begin Your Journey?</h2>
+            <p>Book now - 24hr response guaranteed ✨</p>
             
             <form id="bookingForm">
                 <div class="form-group">
-                    <label>Service</
+                    <label for="service">Service</label>
+                    <select id="service" required>
+                        <option value="">Select a service</option>
+                        <option value="birth-chart">Birth Chart Reading</option>
+                        <option value="tarot">Tarot Card Reading</option>
+                        <option value="numerology">Numerology</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (Optional)</label>
+                    <input type="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" placeholder="Any specific questions or details..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Booking Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/9699412757?text=Hi%20Heramb%20Jyotish!%20I'd%20like%20to%20book%20a%20session%20🌟" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div style="font-size: 4rem; margin-bottom: 1rem; color: var(--ganesha-green);">✅</div>
+            <h2>Booking Request Sent!</h2>
+            <p>Thank you! We'll contact you within 24 hours on WhatsApp. 🌟</p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const service = document.getElementById('service').value;
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `New Booking Request!%0A%0AService: ${service}%0AName: ${name}%0APhone: ${phone}${message ? `%0AMessage: ${message}` : ''}`;
+            const whatsappUrl = `https://wa.me/9699412757?text=${whatsappMessage}`;
+            
+            // Show success modal
+            document.getElementById('successModal').style.display = 'block';
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Modal close
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('successModal').style.display = 'none';
+        });
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('successModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
+```
