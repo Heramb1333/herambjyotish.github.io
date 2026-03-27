@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -568,6 +567,47 @@
             background: var(--white);
         }
 
+        /* Birth details special styling */
+        .birth-details {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 2.5rem;
+        }
+
+        .birth-details h4 {
+            color: rgba(255,255,255,0.95);
+            font-family: 'Crimson Text', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .birth-details h4::after {
+            content: '✦';
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--royal-gold);
+        }
+
+        .birth-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .birth-details-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+        }
+
         /* WhatsApp & Modal */
         .floating-whatsapp {
             position: fixed;
@@ -831,7 +871,7 @@
             
             <form id="bookingForm">
                 <div class="form-group">
-                    <label for="service">Service</label>
+                    <label for="service">Service <span style="color: var(--royal-gold);">*</span></label>
                     <select id="service" required>
                         <option value="">Select a service</option>
                         <option value="birth-chart">Birth Chart Reading</option>
@@ -839,12 +879,32 @@
                         <option value="numerology">Numerology</option>
                     </select>
                 </div>
+
+                <!-- Birth Details Section - Required for Birth Chart -->
+                <div class="birth-details">
+                    <h4>Birth Details <span style="color: var(--royal-gold); font-size: 0.9rem;">(Required for Birth Chart)</span></h4>
+                    <div class="birth-details-grid">
+                        <div class="form-group">
+                            <label for="birthDate">Birth Date <span style="color: var(--royal-gold);">*</span></label>
+                            <input type="date" id="birthDate" placeholder="DD/MM/YYYY">
+                        </div>
+                        <div class="form-group">
+                            <label for="birthTime">Birth Time (24hr) <span style="color: var(--royal-gold);">*</span></label>
+                            <input type="time" id="birthTime" placeholder="HH:MM">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthPlace">Birth Place <span style="color: var(--royal-gold);">*</span></label>
+                        <input type="text" id="birthPlace" placeholder="City, State, Country">
+                    </div>
+                </div>
+
                 <div class="form-group">
-                    <label for="name">Full Name</label>
+                    <label for="name">Full Name <span style="color: var(--royal-gold);">*</span></label>
                     <input type="text" id="name" required placeholder="Enter your full name">
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
+                    <label for="phone">Phone Number <span style="color: var(--royal-gold);">*</span></label>
                     <input type="tel" id="phone" required placeholder="Enter your phone number">
                 </div>
                 <div class="form-group">
@@ -852,7 +912,7 @@
                     <input type="email" id="email" placeholder="Enter your email address">
                 </div>
                 <div class="form-group">
-                    <label for="date">Preferred Date</label>
+                    <label for="date">Preferred Date <span style="color: var(--royal-gold);">*</span></label>
                     <input type="date" id="date" required>
                 </div>
                 <div class="form-group">
@@ -903,7 +963,7 @@
             });
         });
 
-        // Form submission - FIXED WhatsApp country code
+        // Form submission with birth details
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -914,8 +974,30 @@
             const date = document.getElementById('date').value;
             const message = document.getElementById('message').value;
             
-            // Create WhatsApp message with proper formatting
-            const whatsappMessage = `New Booking Request! 🌟%0A%0A📋 Service: ${service}%0A👤 Name: ${name}%0A📱 Phone: ${phone}${email ? `%0A✉️ Email: ${email}` : ''}${date ? `%0A📅 Date: ${date}` : ''}${message ? `%0A💬 Message: ${message}` : ''}`;
+            // Birth details
+            const birthDate = document.getElementById('birthDate').value;
+            const birthTime = document.getElementById('birthTime').value;
+            const birthPlace = document.getElementById('birthPlace').value;
+            
+            // Validate birth details for birth chart service
+            if (service === 'birth-chart' && (!birthDate || !birthTime || !birthPlace)) {
+                alert('Please fill all birth details for Birth Chart Reading.');
+                return;
+            }
+            
+            // Build WhatsApp message
+            let whatsappMessage = `New Booking Request! 🌟%0A%0A📋 Service: ${service}%0A👤 Name: ${name}%0A📱 Phone: ${phone}`;
+            
+            if (email) whatsappMessage += `%0A✉️ Email: ${email}`;
+            if (birthDate || birthTime || birthPlace) {
+                whatsappMessage += `%0A%0A✨ BIRTH DETAILS:%0A`;
+                if (birthDate) whatsappMessage += `📅 Date: ${birthDate}%0A`;
+                if (birthTime) whatsappMessage += `🕐 Time: ${birthTime} (24hr)%0A`;
+                if (birthPlace) whatsappMessage += `📍 Place: ${birthPlace}`;
+            }
+            if (date) whatsappMessage += `%0A%0A📆 Preferred Date: ${date}`;
+            if (message) whatsappMessage += `%0A%0A💬 Message: ${message}`;
+            
             const whatsappUrl = `https://wa.me/919699412757?text=${whatsappMessage}`;
             
             // Show success modal and open WhatsApp
@@ -940,4 +1022,3 @@
     </script>
 </body>
 </html>
-```
